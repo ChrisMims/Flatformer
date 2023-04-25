@@ -35,25 +35,25 @@ public class Player : MonoBehaviour
             playerScore.UpdateScore(value);
         }
     }
-    public float Health { 
+    [field: SerializeField] public int Health { 
         get
         {
             return playerHealth.Health;
         }
         set
         {
-            // TODO: Impliment
+            playerHealth.SetHealth(value);
         }
     }
-    public float MaxHealth
+    [field: SerializeField] public int MaxHealth
     {
         get
         {
-            return playerHealth.Health;
+            return playerHealth.MaxHealth;
         }
         set
         {
-            // TODO: Impliment
+            playerHealth.SetMaxHealth(value);
         }
     }
     #endregion
@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
         playerScale = gameObject.GetComponent<PlayerScale>();
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
         if(gameManager != null)
         {
             playerScore = gameManager.GetComponent<PlayerScore>();
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out IDamageable damageableObject))
         {
             //collision.gameObject.SetActive(false);
-            damageableObject.Damage(2);
+            damageableObject.TakeDamage(2);
         }
     }
 
@@ -99,6 +100,27 @@ public class Player : MonoBehaviour
         {
             playerScale.MinusOne();
         }
+    }
+    [Button("Health = 50/100")]
+    public void Test3()
+    {
+        Health = 50;
+        MaxHealth = 100;
+        Debug.Log(Health + "\n" + MaxHealth);
+    }
+    [Button("Health = 50/50")]
+    public void Test4()
+    {
+        Health = 50;
+        MaxHealth = 50;
+        Debug.Log(Health + "\n" + MaxHealth);
+    }
+    [Button("Health = 100/100")]
+    public void Test5()
+    {
+        Health = 100;
+        MaxHealth= 100;
+        Debug.Log(Health + "\n" + MaxHealth);
     }
     #endregion
 }

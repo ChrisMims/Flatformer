@@ -9,7 +9,7 @@ public abstract class Collectable : MonoBehaviour, IDamageable
     public int MaxHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
     public GameObject ItemToDrop { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
     public int PointsToGive { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    public MMFeedback Feedback { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public MMFeedback DamagedFeedback { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-    public abstract void Damage(int damageTaken);
+    public abstract void TakeDamage(int damageTaken);
 }

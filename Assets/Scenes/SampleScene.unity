@@ -1595,7 +1595,7 @@ MonoBehaviour:
   <ItemToDrop>k__BackingField: {fileID: 0}
   <PointsToGive>k__BackingField: 0
   <Feedback>k__BackingField: {fileID: 0}
-  ProgressBar: {fileID: 0}
+  PlayerProgressBar: {fileID: 0}
   tempHealth: 100
 --- !u!1 &1036855621
 GameObject:

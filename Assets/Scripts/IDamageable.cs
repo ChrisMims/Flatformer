@@ -12,6 +12,8 @@ public interface IDamageable
     public int MaxHealth { get; set; }
     public GameObject ItemToDrop { get; set; }
     public int PointsToGive { get; set; }
-    public MMFeedback Feedback { get; set; }
-    void Damage(int damageTaken);
+    public MMFeedbacks DamagedFeedback { get; set; }
+    public MMFeedbacks DestroyedFeedback { get; set; }
+    void TakeDamage(int damageTaken);
+    void Destroy();
 }

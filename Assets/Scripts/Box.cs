@@ -12,20 +12,28 @@ public class Box : MonoBehaviour, IDamageable
     [field: SerializeField] public int MaxHealth { get; set; }
     [field: SerializeField] public GameObject ItemToDrop { get; set; }
     [field: SerializeField] public int PointsToGive { get; set; }
-    [field: SerializeField] public MMFeedback Feedback { get; set; }
+    [field: SerializeField] public MMFeedbacks DamagedFeedback { get; set; }
+    public MMFeedbacks DestroyedFeedback { get; set; }
 
-    public MMProgressBar ProgressBar;
+    public MMProgressBar PlayerProgressBar;
     public float tempHealth = 100;
     private void Start()
     {
-        ProgressBar = GameObject.Find("HUD").GetComponentInChildren<MMProgressBar>();
+        PlayerProgressBar = GameObject.Find("HUD").GetComponentInChildren<MMProgressBar>();
     }
     [Command("Damage"), Button("Damage")]
-    public void Damage(int damageTaken)
+    public void TakeDamage(int damageTaken)
     {
         Health -= damageTaken;
         // Break and stuff
-        ProgressBar.UpdateBar(Health, 0, MaxHealth);
+        //ProgressBar.UpdateBar(Health, 0, MaxHealth);
+    }
+    public void DamagePlayer(int damageTaken)
+    {
+        Health -= damageTaken;
+        // Break and stuff
+        PlayerProgressBar.UpdateBar(Health, 0, MaxHealth);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,5 +44,10 @@ public class Box : MonoBehaviour, IDamageable
         {
             Debug.Log("DamageableObject: " + damageableObject.ToString() + "\n Collision: " + collisionName);
         }
+    }
+
+    public void Destroy()
+    {
+        throw new System.NotImplementedException();
     }
 }
