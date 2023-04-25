@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public MMFeedbacks playerJumpFeedback, playerDoubleJumpFeedback, playerMoveFeedback, playerLandFeedback;
 
     private Rigidbody2D rb;
-    private CircleCollider2D playerCollider;
+    private PolygonCollider2D playerCollider;
     private SpriteRenderer sprite;
 
     private bool isDoubleJumpAvailable;
@@ -27,11 +27,11 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private AudioSource jumpSoundEffect, doubleJumpSoundEffect;
 
-    // Start is called before the first frame update
+    [Button]
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerCollider = GetComponent<CircleCollider2D>();
+        playerCollider = GetComponent<PolygonCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -42,7 +42,21 @@ public class PlayerMovement : MonoBehaviour
         
         CalculateJump();
         MovePlayer();
+        ChangePlayerDirection();
         UpdateAnimationState();
+
+
+        /*
+        if (Input.GetButtonDown("Left"))
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (Input.GetButtonDown("Right"))
+        {
+
+        }
+        */
+        
     }
     private void FixedUpdate()
     {
@@ -80,7 +94,32 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         xAxis = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * xAxis * Time.deltaTime * movementSpeed);
+
+        // This fixes a bug. A negative xAxis breaks movement when the player is facing left
+        if(xAxis < 0)
+        {
+            transform.Translate(Vector3.right * -xAxis * Time.deltaTime * movementSpeed);
+
+        } else
+        {
+            transform.Translate(Vector3.right * xAxis * Time.deltaTime * movementSpeed);
+
+        }
+    }
+    [Button]
+    private void ChangePlayerDirection()
+    {
+        // TODO: Unit testing!
+        // 180 - left, 0 - right
+        if(xAxis < 0 && transform.rotation.y != -180)
+        {
+            transform.rotation = Quaternion.Euler(0, 180f, 0);
+        }
+        else if(xAxis > 0 && transform.rotation.y != -180)
+        {
+            Debug.Log("true");
+            transform.rotation = Quaternion.Euler(0, 0f, 0);
+        }
     }
 
     private void UpdateAnimationState()
@@ -90,12 +129,12 @@ public class PlayerMovement : MonoBehaviour
         if (xAxis > 0f)
         {
             state = MovementState.running;
-            sprite.flipX = false;
+            //sprite.flipX = false;
         }
         else if (xAxis < 0f)
         {
             state = MovementState.running;
-            sprite.flipX = true;
+            //sprite.flipX = true;
         }
         else
         {
@@ -116,5 +155,12 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size,
             0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    [Button("TESTING FLIP")]
+    public void TestFlip()
+    {
+        //transform.localScale = new Vector3(-1f, 1f, 1f);
+        transform.Rotate(new Vector3(0, 180, 0));
     }
 }
