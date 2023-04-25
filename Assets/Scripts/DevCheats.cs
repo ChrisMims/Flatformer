@@ -35,4 +35,11 @@ public class DevCheats : MonoBehaviour
     {
         player.Scale -= 1;
     }
+
+    [Button("Set Health and Max Health to 100")]
+    public void Test()
+    {
+        PlayerHealth playerHealth = playerGo.GetComponent<PlayerHealth>();
+        playerHealth.TakeDamage(1);
+    }
 }

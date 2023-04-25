@@ -16,18 +16,28 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     // For the player, this will be the death animation feedback
     public MMFeedbacks DestroyedFeedback { get; set; }
 
+    public CalculateDamage calculateDamage;
+
+    [Button("Inititialize")]
+    private void Start()
+    {
+        calculateDamage = GetComponent<CalculateDamage>();
+    }
+
+    [Button]
     public void TakeDamage(int damageTaken)
     {
-        if (Health - damageTaken > MaxHealth)
+        //calculateDamage.TakeDamage(Health, damageTaken);
+        var adjustedHealth = calculateDamage.RawDamage(Health, damageTaken);
+        if (adjustedHealth < 0)
         {
-            // Ouch
-            DamagedFeedback?.PlayFeedbacks();
-
+            // Die and stuff
+            Destroy();
         }
-        else if (Health - damageTaken < MaxHealth)
+        else if (adjustedHealth >= 0)
         {
-            // Die
-            DestroyedFeedback?.PlayFeedbacks();
+            // Take damage
+
         }
     }
 
@@ -42,11 +52,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         Debug.Log("MaxHealth: " + MaxHealth);
     }
 
+    [Button]
+    public void ReadHealth()
+    {
+        Debug.Log("Health: " + Health);
+    }
+
     [Button, Command]
     public void Destroy()
     {
         // Kill player; game over
-
-        throw new System.NotImplementedException();
+        Debug.Log("Game Over");
+        
     }
 }

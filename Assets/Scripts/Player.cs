@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out IDamageable damageableObject))
         {
             //collision.gameObject.SetActive(false);
-            damageableObject.TakeDamage(2);
+            //damageableObject.TakeDamage(2);
         }
     }
 
@@ -121,6 +121,12 @@ public class Player : MonoBehaviour
         Health = 100;
         MaxHealth= 100;
         Debug.Log(Health + "\n" + MaxHealth);
+    }
+
+    [Button("Read Health / MaxHealth")]
+    public void Test6()
+    {
+        Debug.Log("Health: " + Health + "\n" + "MaxHealth" + MaxHealth);
     }
     #endregion
 }

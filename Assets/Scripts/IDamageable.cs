@@ -15,5 +15,8 @@ public interface IDamageable
     public MMFeedbacks DamagedFeedback { get; set; }
     public MMFeedbacks DestroyedFeedback { get; set; }
     void TakeDamage(int damageTaken);
+    /// <summary>
+    /// Award points, drop items, call feedbacks, and clean up game objects
+    /// </summary>
     void Destroy();
 }

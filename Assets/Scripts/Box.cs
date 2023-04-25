@@ -17,10 +17,14 @@ public class Box : MonoBehaviour, IDamageable
 
     public MMProgressBar PlayerProgressBar;
     public float tempHealth = 100;
+
+    [Button]
     private void Start()
     {
+
         PlayerProgressBar = GameObject.Find("HUD").GetComponentInChildren<MMProgressBar>();
     }
+
     [Command("Damage"), Button("Damage")]
     public void TakeDamage(int damageTaken)
     {

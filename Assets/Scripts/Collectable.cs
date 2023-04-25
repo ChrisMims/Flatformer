@@ -10,6 +10,13 @@ public abstract class Collectable : MonoBehaviour, IDamageable
     public GameObject ItemToDrop { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
     public int PointsToGive { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
     public MMFeedback DamagedFeedback { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public MMFeedbacks DestroyedFeedback { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    MMFeedbacks IDamageable.DamagedFeedback { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+    public void Destroy()
+    {
+        throw new System.NotImplementedException();
+    }
 
     public abstract void TakeDamage(int damageTaken);
 }
