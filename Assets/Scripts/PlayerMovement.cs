@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         CalculateJump();
         MovePlayer();
         ChangePlayerDirection();
-        UpdateAnimationState();        
+        UpdateAnimationState(); 
     }
     private void FixedUpdate()
     {

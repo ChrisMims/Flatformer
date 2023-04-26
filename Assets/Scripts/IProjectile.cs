@@ -10,8 +10,6 @@ public interface IProjectile
     public int DamageToInflict { get; set; }
     public MMFeedbacks HitFeedback { get; set; }
     public float Speed { get; set; }
-    public float DistanceToTravel { get; set; }
-    public GameObject ProjectilePrefab { get; set; }
 
     void Update();
 }

@@ -6,8 +6,6 @@ public abstract class Projectile : MonoBehaviour, IProjectile
     [field: SerializeField] public int DamageToInflict { get; set; }
     [field: SerializeField] public MMFeedbacks HitFeedback { get; set; }
     [field: SerializeField] public float Speed { get; set; }
-    [field: SerializeField] public float DistanceToTravel { get; set; }
-    [field: SerializeField] public GameObject ProjectilePrefab { get; set; }
 
     public virtual void Update()
     {

@@ -51,7 +51,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public virtual void AttackPlayer(float attackDamage)
     {
-        // TODO: 
+        // TODO: Add to this. It's a bit boring.
         player.Health -= (int)attackDamage;
     }
 

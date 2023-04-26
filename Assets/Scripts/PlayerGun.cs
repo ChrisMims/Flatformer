@@ -9,21 +9,39 @@ public class PlayerGun : MonoBehaviour
 {
     public Transform gunEnd;
     public GameObject bulletPrefab;
-    public MMFeedbacks fireFeedback;
+    public MMFeedbacks fireFeedback, emptyGunFeedback;
 
     private Vector3 gunEndVector3;
     private GameObject liveBullet;
 
-    [Button("Initialize")]
-    void Start()
+    private float _secondsToTravel = 5f;
+
+    private void Update()
     {
-        Debug.Log("Init");
+        if (Input.GetButtonDown("Fire1") && CanFire())
+        {
+            Shoot();
+        }
+        else if(Input.GetButtonDown("Fire1") && !CanFire())
+        {
+            // Click
+            emptyGunFeedback?.PlayFeedbacks();
+        }
     }
 
-    [Button]
+    [Button, Command]
     public void Shoot()
     {
         gunEndVector3 = gunEnd.transform.position;
-        liveBullet = Instantiate(bulletPrefab, gunEndVector3, gunEnd.rotation, null);
+        // Instantiate the bullet, then destroy it after [_secondsToTravel] seconds
+        // There are many ways to write this, but I believe in this case the one-line
+        // solution is best, if slightly less readable.
+        Destroy(Instantiate(bulletPrefab, gunEndVector3, gunEnd.rotation, null), _secondsToTravel);
+    }
+
+    private bool CanFire()
+    {
+        // TODO: Extend this and implement it as a mechanic.
+        return true;
     }
 }
