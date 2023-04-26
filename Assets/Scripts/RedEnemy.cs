@@ -6,9 +6,10 @@ using Sirenix.OdinInspector;
 public class RedEnemy : Enemy, IDamageable
 {
     [Button]
-    private void Start()
+    public override void Start()
     {
         Debug.Log(Health + " " + MaxHealth);
+        base.Start();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

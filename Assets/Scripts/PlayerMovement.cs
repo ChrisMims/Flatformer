@@ -117,7 +117,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(xAxis > 0 && transform.rotation.y != -180)
         {
-            Debug.Log("true");
             transform.rotation = Quaternion.Euler(0, 0f, 0);
         }
     }
@@ -155,12 +154,5 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size,
             0f, Vector2.down, .1f, jumpableGround);
-    }
-
-    [Button("TESTING FLIP")]
-    public void TestFlip()
-    {
-        //transform.localScale = new Vector3(-1f, 1f, 1f);
-        transform.Rotate(new Vector3(0, 180, 0));
     }
 }
