@@ -6,6 +6,7 @@ public abstract class Projectile : MonoBehaviour, IProjectile
     [field: SerializeField] public int DamageToInflict { get; set; }
     [field: SerializeField] public MMFeedbacks HitFeedback { get; set; }
     [field: SerializeField] public float Speed { get; set; }
+    [field: SerializeField] public float DistanceToTravel { get; set; }
     [field: SerializeField] public GameObject ProjectilePrefab { get; set; }
 
     public virtual void Update()
@@ -24,7 +25,6 @@ public abstract class Projectile : MonoBehaviour, IProjectile
         {
             // Damage object
             damageableObject.TakeDamage(DamageToInflict);
-
         }
         else if (collisionName == "Player")
         {
@@ -32,7 +32,7 @@ public abstract class Projectile : MonoBehaviour, IProjectile
         }
         else
         {
-            Debug.LogWarning(gameObject.name + " collided with " + collisionName);
+            // Debug.LogWarning(gameObject.name + " collided with " + collisionName);
         }
 
         HitFeedback?.PlayFeedbacks();

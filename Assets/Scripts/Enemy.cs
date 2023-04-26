@@ -19,15 +19,40 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float _attackRange = 3f;
     [SerializeField] protected float _attackDamage = 5f;
     [SerializeField] protected float _attackSpeed = 1f;
+
+    protected Player player;
     [Button("Initialize")]
     public virtual void Start()
     {
+        player = GameObject.Find("Player").GetComponent<Player>();
         HealthBar = this.GetComponent<MMHealthBar>();
     }
 
-    public virtual void AttackPlayer()
+    public virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        CheckIfPlayer(collision);
+    }
+
+    public virtual void CheckIfPlayer(Collision2D collision)
+    {
+        var collisionName = collision.gameObject.name;
+        if (collision.gameObject.TryGetComponent(out IDamageable damageableObject) &&
+            collisionName == "Player")
+        {
+            Debug.Log("Player hit!");
+            // Damage player
+            AttackPlayer(_attackDamage);
+        }
+        else if (collisionName != "Player")
+        {
+            // Do nothing
+        }
+    }
+
+    public virtual void AttackPlayer(float attackDamage)
     {
         // TODO: 
+        player.Health -= (int)attackDamage;
     }
 
     public void TakeDamage(int damageTaken)
@@ -51,8 +76,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public void Destroy()
     {
         // Award points to the player
-        Player player = GameObject.Find("Player").GetComponent<Player>();
-        player.Score += 10;
+        player.Score += PointsToGive;
         Debug.Log("Player Score: " + player.Score);
         // TODO: Figure out what to do with dead enemies. Just destroy them?
         // Add sound

@@ -11,21 +11,4 @@ public class RedEnemy : Enemy, IDamageable
         Debug.Log(Health + " " + MaxHealth);
         base.Start();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("RedEnemy Health: " + Health);
-        AttackPlayer();
-    }
-
-    [Button]
-    public override void AttackPlayer()
-    {
-        base.AttackPlayer();
-    }
-
-    [Button]
-    public override void OnTriggerEnter2D(Collider2D collision)
-    {
-        base.OnTriggerEnter2D(collision);
-    }
 }
