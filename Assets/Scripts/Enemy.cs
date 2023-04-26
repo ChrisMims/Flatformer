@@ -3,6 +3,7 @@ using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
@@ -18,9 +19,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float _attackRange = 3f;
     [SerializeField] protected float _attackDamage = 5f;
     [SerializeField] protected float _attackSpeed = 1f;
+    [Button("Initialize")]
     public virtual void Start()
     {
-        HealthBar = GetComponent<MMHealthBar>();
+        HealthBar = this.GetComponent<MMHealthBar>();
     }
 
     public virtual void AttackPlayer()
@@ -41,7 +43,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             Destroy();
         }
 
-        //HealthBar.UpdateBar(Health, 0, MaxHealth, true);
+        HealthBar.UpdateBar((float)Health, 0, (float)MaxHealth, true);
     }
     public void Destroy()
     {

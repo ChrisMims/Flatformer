@@ -845,6 +845,7 @@ GameObject:
   - component: {fileID: 718568826}
   - component: {fileID: 718568832}
   - component: {fileID: 718568833}
+  - component: {fileID: 718568834}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -1225,6 +1226,20 @@ PolygonCollider2D:
       - {x: 0.14, y: -1.73}
       - {x: 0.35999998, y: -1.7199999}
       - {x: 0.45, y: -1.7099999}
+--- !u!114 &718568834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718568812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9647155158b5644bbd11b7ab4b0df60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DamageToInflict>k__BackingField: 5
+  <HitFeedback>k__BackingField: {fileID: 0}
 --- !u!1 &748809677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 60
-  <MaxHealth>k__BackingField: 0
+  <MaxHealth>k__BackingField: 60
   <ItemToDrop>k__BackingField: {fileID: 0}
   <PointsToGive>k__BackingField: 0
   <DamagedFeedback>k__BackingField: {fileID: 0}
@@ -2023,7 +2038,7 @@ MonoBehaviour:
   TimeScale: 0
   HealthBarPrefab: {fileID: 0}
   TargetProgressBar: {fileID: 0}
-  Size: {x: 2, y: 0.4}
+  Size: {x: 4, y: 0.8}
   BackgroundPadding: {x: 0.01, y: 0.01}
   InitialRotationAngles: {x: 0, y: 0, z: 0}
   ForegroundColor:
