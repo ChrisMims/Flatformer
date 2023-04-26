@@ -248,10 +248,11 @@ GameObject:
   m_Component:
   - component: {fileID: 342753496}
   - component: {fileID: 342753497}
+  - component: {fileID: 342753498}
   m_Layer: 2
   m_Name: GunEnd
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -322,6 +323,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &342753498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342753495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6786e007786e464cb363af15c381f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunEnd: {fileID: 342753496}
+  bulletPrefab: {fileID: 3127858522326952768, guid: 405cda92a9e9ddc4b866ed1ad6ed6507, type: 3}
+  fireFeedback: {fileID: 0}
 --- !u!1 &348747958
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +861,6 @@ GameObject:
   - component: {fileID: 718568826}
   - component: {fileID: 718568832}
   - component: {fileID: 718568833}
-  - component: {fileID: 718568834}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -1226,20 +1241,6 @@ PolygonCollider2D:
       - {x: 0.14, y: -1.73}
       - {x: 0.35999998, y: -1.7199999}
       - {x: 0.45, y: -1.7099999}
---- !u!114 &718568834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718568812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9647155158b5644bbd11b7ab4b0df60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <DamageToInflict>k__BackingField: 5
-  <HitFeedback>k__BackingField: {fileID: 0}
 --- !u!1 &748809677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +1695,7 @@ GameObject:
   - component: {fileID: 954504890}
   - component: {fileID: 954504893}
   - component: {fileID: 954504894}
+  - component: {fileID: 954504895}
   m_Layer: 0
   m_Name: RedEnemy
   m_TagString: Untagged
@@ -1781,7 +1783,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.014230728, y: 0.092500925}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1792,7 +1794,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.6469488, y: 3.7750278}
   m_EdgeRadius: 0
 --- !u!114 &954504889
 MonoBehaviour:
@@ -1811,7 +1813,7 @@ MonoBehaviour:
   <ItemToDrop>k__BackingField: {fileID: 0}
   <PointsToGive>k__BackingField: 0
   <DamagedFeedback>k__BackingField: {fileID: 0}
-  <DestroyedFeedback>k__BackingField: {fileID: 0}
+  <DestroyedFeedback>k__BackingField: {fileID: 954504891}
   <HealthBar>k__BackingField: {fileID: 0}
   _attackRange: 3
   _attackDamage: 5
@@ -2198,6 +2200,27 @@ MonoBehaviour:
   DisplayDurationOnHit: 1
   HideBarAtZero: 1
   HideBarAtZeroDelay: 1
+--- !u!50 &954504895
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954504884}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1036855621
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,17 +8,22 @@ using QFSW.QC;
 public class PlayerGun : MonoBehaviour
 {
     public Transform gunEnd;
-    public GameObject bullet;
+    public GameObject bulletPrefab;
     public MMFeedbacks fireFeedback;
-    // Start is called before the first frame update
+
+    private Vector3 gunEndVector3;
+    private GameObject liveBullet;
+
+    [Button("Initialize")]
     void Start()
     {
-        
+        Debug.Log("Init");
     }
 
-    // Update is called once per frame
-    void Update()
+    [Button]
+    public void Shoot()
     {
-        
+        gunEndVector3 = gunEnd.transform.position;
+        liveBullet = Instantiate(bulletPrefab, gunEndVector3, gunEnd.rotation, null);
     }
 }

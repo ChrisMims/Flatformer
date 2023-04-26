@@ -9,6 +9,8 @@ public interface IProjectile
 {
     public int DamageToInflict { get; set; }
     public MMFeedbacks HitFeedback { get; set; }
+    public float Speed { get; set; }
+    public GameObject ProjectilePrefab { get; set; }
 
-    void DealDamage(int damageDealt);
+    void Update();
 }

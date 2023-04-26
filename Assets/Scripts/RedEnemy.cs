@@ -26,7 +26,6 @@ public class RedEnemy : Enemy, IDamageable
     [Button]
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("...");
         base.OnTriggerEnter2D(collision);
     }
 }

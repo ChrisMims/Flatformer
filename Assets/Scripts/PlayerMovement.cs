@@ -43,20 +43,7 @@ public class PlayerMovement : MonoBehaviour
         CalculateJump();
         MovePlayer();
         ChangePlayerDirection();
-        UpdateAnimationState();
-
-
-        /*
-        if (Input.GetButtonDown("Left"))
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else if (Input.GetButtonDown("Right"))
-        {
-
-        }
-        */
-        
+        UpdateAnimationState();        
     }
     private void FixedUpdate()
     {

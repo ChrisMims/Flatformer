@@ -36,14 +36,17 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         {
             Health -= damageTaken;
             DamagedFeedback?.PlayFeedbacks();
+
+            HealthBar.UpdateBar((float)Health, 0, (float)MaxHealth, true);
         }
         else
         {
-            DestroyedFeedback?.PlayFeedbacks();
+            // Refactor: I can probably call UpdateBar(0,0,1,true) in a feedback,
+            // but it may be easier to manage from this script.
+            HealthBar.UpdateBar(0, 0, 1, true);
+
             Destroy();
         }
-
-        HealthBar.UpdateBar((float)Health, 0, (float)MaxHealth, true);
     }
     public void Destroy()
     {
@@ -54,24 +57,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         // TODO: Figure out what to do with dead enemies. Just destroy them?
         // Add sound
         // Add an animation
+        DestroyedFeedback?.PlayFeedbacks();
 
         GameObject.Destroy(this.gameObject);
-    }
-
-    public virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        // TODO:
-        // force is how forcefully we will push the player away from the enemy.
-        float force = 3;
-
-        // If the object we hit is the enemy
-        if (collision.gameObject.tag == "enemy")
-        {
-            // We then get the opposite (-Vector3) and normalize it
-            //dir = -dir.normalized;
-            // And finally we add force in the direction of dir and multiply it by force. 
-            // This will push back the player
-            //GetComponent<Rigidbody2D>().AddForce(dir * force);
-        }
     }
 }
