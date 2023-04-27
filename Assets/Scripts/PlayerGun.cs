@@ -14,7 +14,7 @@ public class PlayerGun : MonoBehaviour
     private Vector3 gunEndVector3;
     private GameObject liveBullet;
 
-    private float _secondsToTravel = 5f;
+    [SerializeField] private float _secondsToTravel = 5f;
 
     private void Update()
     {

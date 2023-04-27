@@ -50,8 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DamageToInflict>k__BackingField: 5
   <HitFeedback>k__BackingField: {fileID: 2037349471}
-  <Speed>k__BackingField: 10
-  <ProjectilePrefab>k__BackingField: {fileID: 0}
+  <Speed>k__BackingField: 60
 --- !u!61 &6752676445087602841
 BoxCollider2D:
   m_ObjectHideFlags: 0
