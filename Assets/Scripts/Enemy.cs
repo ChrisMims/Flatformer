@@ -39,7 +39,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         if (collision.gameObject.TryGetComponent(out IDamageable damageableObject) &&
             collisionName == "Player")
         {
-            Debug.Log("Player hit!");
             // Damage player
             AttackPlayer(_attackDamage);
         }
@@ -53,6 +52,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         // TODO: Add to this. It's a bit boring.
         player.Health -= (int)attackDamage;
+
     }
 
     public void TakeDamage(int damageTaken)

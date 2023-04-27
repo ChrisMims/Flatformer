@@ -1,12 +1,13 @@
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using QFSW.QC;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    public int Health { get; set; }
-    public int MaxHealth { get; set; }
+    [field: SerializeField] public int Health { get; set; }
+    [field: SerializeField] public int MaxHealth { get; set; }
 
     // Player does not drop items
     public GameObject ItemToDrop { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
@@ -16,11 +17,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     // For the player, this will be the death animation feedback
     public MMFeedbacks DestroyedFeedback { get; set; }
 
+    private MMProgressBar healthBar;
+
     public CalculateDamage calculateDamage;
 
     [Button("Inititialize")]
     private void Start()
     {
+        healthBar = GameObject.Find("HUD").GetComponentInChildren<MMProgressBar>();
         calculateDamage = GetComponent<CalculateDamage>();
     }
 
@@ -44,12 +48,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void SetHealth(int newValue)
     {
         Health = newValue;
-        Debug.Log("Health: " + Health);
+
+        healthBar.UpdateBar(Health, 0, MaxHealth);
     }
     public void SetMaxHealth(int newValue)
     {
         MaxHealth = newValue;
-        Debug.Log("MaxHealth: " + MaxHealth);
+
+        healthBar.UpdateBar(Health, 0, MaxHealth);
     }
 
     [Button]
