@@ -8,7 +8,7 @@ public class Goal : MonoBehaviour
     public MMFeedbacks goalFeedback;
 
     [SerializeField, Required] private float scoreForThisLevel = 5f;
-    private PlayerScore playerScore;
+    public PlayerScore playerScore;
 
     void Start()
     {
@@ -19,11 +19,11 @@ public class Goal : MonoBehaviour
     [Button(buttonSize: 2), Command("Goal")]
     private void ActivateGoal()
     {
+        goalFeedback.Initialization();
         // Todo: Change level
 
         goalFeedback?.PlayFeedbacks();
         playerScore.UpdateScore(scoreForThisLevel);
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

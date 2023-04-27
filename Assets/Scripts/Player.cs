@@ -25,16 +25,6 @@ public class Player : MonoBehaviour
             playerScale.ChangeScale(value);
         }
     }
-    public float Score { 
-        get
-        {
-            return playerScore.Score;
-        }
-        set
-        {
-            playerScore.UpdateScore(value);
-        }
-    }
     [field: SerializeField] public int Health { 
         get
         {
@@ -70,10 +60,6 @@ public class Player : MonoBehaviour
         }
 
         Scale = 2;
-        Score = 0;
-
-        Health = 100;
-        MaxHealth = 100;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

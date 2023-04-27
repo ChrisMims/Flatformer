@@ -17,15 +17,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     // For the player, this will be the death animation feedback
     public MMFeedbacks DestroyedFeedback { get; set; }
 
-    private MMProgressBar healthBar;
+    public MMProgressBar healthBar;
 
     public CalculateDamage calculateDamage;
 
     [Button("Inititialize")]
     private void Start()
     {
-        healthBar = GameObject.Find("HUD").GetComponentInChildren<MMProgressBar>();
         calculateDamage = GetComponent<CalculateDamage>();
+        MaxHealth = 100;
+        Health = MaxHealth;
     }
 
     [Button]

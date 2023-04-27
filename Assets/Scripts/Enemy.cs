@@ -21,10 +21,14 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float _attackSpeed = 1f;
 
     protected Player player;
+    protected PlayerHealth playerHealth;
+    protected PlayerScore playerScore;
     [Button("Initialize")]
     public virtual void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        playerScore = GameObject.Find("GameManager").GetComponent<PlayerScore>();
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
         HealthBar = this.GetComponent<MMHealthBar>();
     }
 
@@ -76,8 +80,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public void Destroy()
     {
         // Award points to the player
-        player.Score += PointsToGive;
-        Debug.Log("Player Score: " + player.Score);
+        playerScore.UpdateScore((float)PointsToGive);
         // TODO: Figure out what to do with dead enemies. Just destroy them?
         // Add sound
         // Add an animation

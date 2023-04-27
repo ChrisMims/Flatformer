@@ -7,11 +7,26 @@ using MoreMountains.Feedbacks;
 
 public class PlayerScore : MonoBehaviour
 {
-    [SerializeField] private float playerScore;
-    public float Score { get { return playerScore; } }
-    
-    public void UpdateScore(float score)
+    private float score;
+    public float Score
     {
-        playerScore = score;
+        get
+        {
+            return score;
+        }
+        private set
+        {
+            score = value;
+        }
+    }
+    private void Start()
+    {
+        Score = 0;
+    }
+    [Button]
+    public void UpdateScore(float valueToAdd)
+    {
+        score += valueToAdd;
+        Debug.Log(score);
     }
 }
