@@ -21,6 +21,7 @@ public class PlayerGun : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && CanFire())
         {
             Shoot();
+            fireFeedback?.PlayFeedbacks();
         }
         else if(Input.GetButtonDown("Fire1") && !CanFire())
         {

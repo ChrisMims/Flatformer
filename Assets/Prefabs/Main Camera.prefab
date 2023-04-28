@@ -17,12 +17,14 @@ GameObject:
   - component: {fileID: 431179113448229086}
   - component: {fileID: 431179113448229085}
   - component: {fileID: 368059305}
+  - component: {fileID: 1341419834}
+  - component: {fileID: -3667371041987382857}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &431179113448229075
 Transform:
@@ -675,6 +677,31 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1341419834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431179113448229079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee7ed170121a57428ee2c94dce2e507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectID: 
+--- !u!114 &-3667371041987382857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431179113448229079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1135eca2e108784791d35f09b46d86f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4025527918590832859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -729,6 +756,10 @@ PrefabInstance:
     - target: {fileID: 851362463880545393, guid: a8db95e19574c4541b81d4809e163310, type: 3}
       propertyPath: m_Name
       value: Zoom + Vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 851362463880545393, guid: a8db95e19574c4541b81d4809e163310, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 851362463880545395, guid: a8db95e19574c4541b81d4809e163310, type: 3}
       propertyPath: managedReferences[0].ZoomMode
@@ -1571,6 +1602,10 @@ PrefabInstance:
     - target: {fileID: 3185910117791210495, guid: d557bfec9716c484981f0af5293a265e, type: 3}
       propertyPath: m_Name
       value: 'Zoom + Rotation '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185910117791210495, guid: d557bfec9716c484981f0af5293a265e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d557bfec9716c484981f0af5293a265e, type: 3}

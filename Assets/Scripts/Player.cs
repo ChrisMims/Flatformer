@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private PlayerScore playerScore;
     private GameObject gameManager;
     private PlayerHealth playerHealth;
+    private static bool created = false;
 
     public MMProgressBar progressBarProgress;
 
@@ -61,6 +62,25 @@ public class Player : MonoBehaviour
 
         Scale = 2;
     }
+    private void Start()
+    {
+        CheckIfThisExists();
+    }
+    private void CheckIfThisExists()
+    {
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+            Debug.Log("This exists.");
+        }
+        else
+        {
+            Destroy(gameObject);
+            Debug.Log("This doesn't exist.");
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out IDamageable damageableObject))
